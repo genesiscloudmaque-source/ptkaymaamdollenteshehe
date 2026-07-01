@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Official Portal of City of Bacoor National High School - Springville. Vision, Mission & DepEd Mandate.">
+    <title>CBNHS - Springville | Vision, Mission & Mandate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        :root {
+            --bg: #0b1329;
+            --bg2: #1c2541;
+            --glass: rgba(28, 37, 65, 0.45);
+            --glass-h: rgba(28, 37, 65, 0.65);
+            --txt: #f8fafc;
+            --txt2: #94a3b8;
+            --accent: #fbbf24;
+            --accent-rgb: 251, 191, 36;
+            --blue: #3a86c8;
+            --blue-rgb: 58, 134, 200;
+            --border: rgba(255, 255, 255, 0.08);
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        [data-theme="light"] {
+            --bg: #f8fafc;
+            --bg2: #ffffff;
+            --glass: rgba(255, 255, 255, 0.7);
+            --glass-h: rgba(255, 255, 255, 0.95);
+            --txt: #0f172a;
+            --txt2: #475569;
+            --accent: #d97706;
+            --accent-rgb: 217, 119, 6;
+            --blue: #1d4ed8;
+            --blue-rgb: 29, 78, 216;
+            --border: rgba(15, 23, 42, 0.08);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--txt);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background .3s, color .3s;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--bg2);
+            border-radius: 10px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Ambient blobs */
+        .blobs {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.12;
+            animation: bfloat 12s infinite alternate ease-in-out;
+        }
+
+        [data-theme="light"] .blob {
+            opacity: 0.05;
+        }
+
+        .b1 {
+            background: var(--blue);
+            width: 450px;
+            height: 450px;
+            top: -10%;
+            left: -10%;
+        }
+
+        .b2 {
+            background: var(--accent);
+            width: 400px;
+            height: 400px;
+            top: 50%;
+            right: -5%;
+            animation-delay: -4s;
+        }
+
+        @keyframes bfloat {
+            to {
+                transform: translate(40px, 30px) scale(1.1);
+            }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            transition: .3s;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            text-decoration: none;
+            color: var(--txt);
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+        }
+
+        .logo-txt {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            line-height: 1.1;
+        }
+
+        .logo-txt span {
+            color: var(--accent);
+            font-size: .7rem;
+            display: block;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--txt2);
+            font-weight: 600;
+            font-size: .9rem;
+            transition: color .3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--txt);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+        }
+
+        .theme-btn {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            color: var(--txt);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: .3s;
+        }
+
+        .theme-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .mob-btn {
+            display: none;
+            font-size: 1.4rem;
+            color: var(--txt);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 90px;
+            padding-bottom: 40px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .badge {
+            border: 1px solid rgba(var(--blue-rgb), .3);
+            color: var(--txt);
+            padding: .4rem .9rem;
+            border-radius: 50px;
+            font-size: .8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .badge i {
+            color: var(--accent);
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 1.25rem;
+        }
+
+        h1 span {
+            background: linear-gradient(135deg, var(--accent), var(--blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: var(--txt2);
+            margin-bottom: 2rem;
+            max-width: 550px;
+        }
+
+        .ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .6rem;
+            padding: .75rem 1.75rem;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: .95rem;
+            cursor: pointer;
+            transition: all .3s var(--bounce);
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, var(--accent), #f59e0b);
+            color: #0b1329;
+            box-shadow: 0 4px 15px rgba(var(--accent-rgb), .35);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(var(--accent-rgb), .5);
+        }
+
+        .btn-glass {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            color: var(--txt);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-glass:hover {
+            transform: translateY(-3px);
+            border-color: var(--blue);
+        }
+
+        .hero-vis {
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo-frame {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--bg2) 50%, transparent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+        }
+
+        .logo-frame::before {
+            content: '';
+            position: absolute;
+            inset: -12px;
+            border-radius: 50%;
+            border: 2px dashed rgba(var(--blue-rgb), .3);
+            animation: spin 25s linear infinite;
+        }
+
+        .logo-frame::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 2px solid rgba(var(--accent-rgb), .4);
+            animation: pulse 4s ease-in-out infinite alternate;
+        }
+
+        .logo-frame img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--bg);
+            z-index: 1;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+            from {
+                transform: scale(.98);
+                opacity: .5;
+            }
+
+            to {
+                transform: scale(1.02);
+                opacity: 1;
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .sec-head {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 3.5rem;
+        }
+
+        .sec-tag {
+            color: var(--accent);
+            font-size: .8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: .5rem;
+            display: block;
+        }
+
+        .sec-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -.5px;
+            margin-bottom: .75rem;
+        }
+
+        .divider {
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--blue));
+            margin: 1rem auto;
+            border-radius: 20px;
+        }
+
+        .sec-desc {
+            color: var(--txt2);
+            font-size: 1rem;
+        }
+
+        /* Glass card */
+        .card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: var(--shadow);
+            transition: all .4s var(--bounce);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, .2);
+        }
+
+        /* Timeline */
+        .timeline {
+            padding-left: 1.75rem;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 6px;
+            width: 2px;
+            height: 100%;
+            background: var(--border);
+        }
+
+        .tl-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .tl-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .tl-dot {
+            position: absolute;
+            left: -1.75rem;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--bg);
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 8px var(--accent);
+            transition: .3s;
+        }
+
+        .tl-item:hover .tl-dot {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+
+        .tl-year {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: .3rem;
+        }
+
+        .tl-title {
+            font-weight: 700;
+            margin-bottom: .3rem;
+        }
+
+        .tl-desc {
+            color: var(--txt2);
+            font-size: .9rem;
+        }
+
+        /* Scope cards */
+        .scope-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .scope-card {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .scope-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: rgba(var(--blue-rgb), .1);
+            border: 1px solid rgba(var(--blue-rgb), .2);
+            color: var(--blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: .3s;
+        }
+
+        .scope-card:hover .scope-icon {
+            background: var(--blue);
+            color: white;
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .scope-card h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+        }
+
+        .scope-card p {
+            color: var(--txt2);
+            font-size: .9rem;
+        }
+
+        /* VM grid */
+        .vm-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .vm-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vm-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent), var(--blue));
+        }
+
+        .vm-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            opacity: .8;
+            margin-bottom: 1.5rem;
+            transition: transform .5s var(--bounce);
+        }
+
+        .vm-card:hover .vm-icon {
+            transform: scale(1.15) translateY(-4px);
+        }
+
+        .vm-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .vm-text {
+            font-size: .95rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .vm-text.sub {
+            font-size: .9rem;
+            color: var(--txt2);
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+            margin-top: auto;
+        }
+
+        .chip {
+            background: rgba(var(--blue-rgb), .08);
+            border: 1px solid rgba(var(--blue-rgb), .15);
+            font-size: .75rem;
+            font-weight: 700;
+            padding: .35rem .8rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            transition: .3s;
+            cursor: default;
+        }
+
+        .chip:hover {
+            background: var(--blue);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .chip.gold {
+            background: rgba(var(--accent-rgb), .08);
+            border-color: rgba(var(--accent-rgb), .2);
+        }
+
+        .chip.gold:hover {
+            background: var(--accent);
+            color: #0b1329;
+        }
+
+        /* Core values */
+        .val-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .val-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 1.75rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all .3s var(--bounce);
+        }
+
+        .val-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(var(--accent-rgb), .15);
+        }
+
+        .val-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .val-name {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        .val-detail {
+            margin-top: .75rem;
+            font-size: .82rem;
+            color: var(--txt2);
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all .3s;
+        }
+
+        .val-card.open .val-detail {
+            max-height: 120px;
+            opacity: 1;
+        }
+
+        .val-card.open {
+            border-color: var(--accent);
+            background: var(--glass-h);
+            box-shadow: 0 0 25px rgba(var(--accent-rgb), .2);
+        }
+
+        /* Pledge */
+        .pledge-grid {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: .4rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .form-label {
+            font-weight: 700;
+            font-size: .85rem;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+        }
+
+        .form-input,
+        .form-select {
+            background: rgba(0, 0, 0, .15);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: .75rem 1rem;
+            font-family: inherit;
+            color: var(--txt);
+            font-size: .95rem;
+            transition: .3s;
+        }
+
+        [data-theme="light"] .form-input,
+        [data-theme="light"] .form-select {
+            background: rgba(0, 0, 0, .03);
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(var(--accent-rgb), .15);
+        }
+
+        .chk-label {
+            display: flex;
+            align-items: flex-start;
+            gap: .6rem;
+            cursor: pointer;
+            font-size: .9rem;
+            color: var(--txt2);
+            margin-bottom: .75rem;
+        }
+
+        .chk-label input {
+            margin-top: 3px;
+            accent-color: var(--accent);
+            width: 15px;
+            height: 15px;
+            cursor: pointer;
+        }
+
+        .cert-frame {
+            border: 4px double var(--accent);
+            padding: 2rem;
+            border-radius: 14px;
+            background: radial-gradient(circle, var(--bg2) 60%, var(--bg));
+            box-shadow: var(--shadow);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            position: sticky;
+            top: 100px;
+            transition: .5s;
+        }
+
+        .cert-frame::before {
+            content: '';
+            position: absolute;
+            inset: 7px;
+            border: 1px solid rgba(var(--accent-rgb), .2);
+            pointer-events: none;
+        }
+
+        .cert-header {
+            font-family: 'Outfit', sans-serif;
+            font-size: .75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.25rem;
+            font-weight: 700;
+        }
+
+        .cert-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .cert-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-decoration: underline;
+            font-style: italic;
+            text-transform: capitalize;
+            margin: .75rem 0;
+        }
+
+        .cert-role-tag {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: .75rem;
+            color: var(--blue);
+            padding: .3rem .75rem;
+            border-radius: 50px;
+            border: 1px solid rgba(var(--blue-rgb), .2);
+            background: rgba(var(--blue-rgb), .08);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .cert-placeholder i {
+            font-size: 3.5rem;
+            color: var(--accent);
+            opacity: .4;
+            animation: pIcon 2.5s infinite alternate;
+        }
+
+        @keyframes pIcon {
+            from {
+                transform: scale(.95);
+                opacity: .3;
+            }
+
+            to {
+                transform: scale(1.05);
+                opacity: .7;
+            }
+        }
+
+        /* Quote banner */
+        .quote-banner {
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(var(--blue-rgb), .15), rgba(var(--accent-rgb), .05));
+            text-align: center;
+        }
+
+        .quote {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            max-width: 800px;
+            margin: 0 auto 1rem;
+            line-height: 1.4;
+        }
+
+        .quote::before,
+        .quote::after {
+            content: '"';
+            font-size: 2.5rem;
+            color: var(--accent);
+            vertical-align: middle;
+        }
+
+        .quote-author {
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: .85rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #060b18;
+            color: #94a3b8;
+            padding: 3rem 0 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        [data-theme="light"] footer {
+            background: #0f172a;
+            color: #cbd5e1;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-title {
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: .6rem;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: .9rem;
+            transition: .3s;
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, .05);
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: .8rem;
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity .7s, transform .7s cubic-bezier(.16, 1, .3, 1);
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+
+            .hero-grid,
+            .vm-grid,
+            .pledge-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-grid {
+                text-align: center;
+            }
+
+            .hero-desc {
+                margin: 0 auto 2rem;
+            }
+
+            .ctas {
+                justify-content: center;
+            }
+
+            .cert-frame {
+                position: relative;
+                top: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--bg);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                transition: left .4s;
+                z-index: 99;
+            }
+
+            .nav-links.open {
+                left: 0;
+            }
+
+            .mob-btn {
+                display: block;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+
+            .cert-frame,
+            .cert-frame * {
+                visibility: visible;
+            }
+
+            .cert-frame {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                border: 10px double #fbbf24 !important;
+                background: white !important;
+                color: black !important;
+                padding: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="blobs">
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+    </div>
+
+    <!-- Nav -->
+    <header>
+        <div class="container nav">
+            <a href="#" class="logo">
+                <img src="cbnhslogo.jfif" alt="CBNHS Logo"
+                    onerror="this.src='https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&q=80&w=100';">
+                <div class="logo-txt">CBNHS - Springville<span>Division of Bacoor City</span></div>
+            </a>
+            <ul class="nav-links" id="navMenu">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#mandate">Mandate</a></li>
+                <li><a href="#vm">Vision & Mission</a></li>
+                <li><a href="#values">Core Values</a></li>
+                <li><a href="#pledge">Pledge</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-btn" id="themeBtn" aria-label="Toggle Theme"><i
+                        class="fa-solid fa-moon"></i></button>
+                <button class="mob-btn" id="mobBtn" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="container hero-grid">
+            <div>
+                <div class="badge"><i class="fa-solid fa-graduation-cap"></i> Character Building & Academic Excellence
+                </div>
+                <h1>Empowering <span>Bacooreño Learners</span> to Build a Better Community</h1>
+                <p class="hero-desc">Welcome to the official portal of City of Bacoor National High School -
+                    Springville. Guided by the Department of Education's mandate, we safeguard the right of every
+                    learner to equitable, quality, and complete basic education.</p>
+                <div class="ctas">
+                    <a href="#mandate" class="btn btn-gold">Explore Our Mandate <i
+                            class="fa-solid fa-arrow-down"></i></a>
+                    <a href="#pledge" class="btn btn-glass">Sign the Pledge</a>
+                </div>
+            </div>
+            <div class="hero-vis">
+                <div class="logo-frame">
+                    <img src="cbnhslogo.jfif" alt="CBNHS Emblem"
+                        onerror="this.src='https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&q=80&w=500';">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mandate -->
+    <section id="mandate" class="reveal">
+        <div class="container">
+            <div class="sec-head">
+                <span class="sec-tag">Governance of Basic Education</span>
+                <h2 class="sec-title">The DepEd Mandate</h2>
+                <div class="divider"></div>
+                <p class="sec-desc">Tracing the historical foundations and statutory mandate of the Department of
+                    Education that shapes our operations.</p>
+            </div>
+            <div style="display: grid; gap: 2rem;">
+                <div class="card">
+                    <h3
+                        style="margin-bottom: 1.5rem; color: var(--accent); display: flex; align-items: center; gap: .6rem;">
+                        <i class="fa-solid fa-clock-rotate-left"></i> Historical Evolution
+                    </h3>
+                    <div class="timeline">
+                        <div class="tl-item">
+                            <div class="tl-dot"></div>
+                            <div class="tl-year">1863</div>
+                            <h4 class="tl-title">Education Decree of 1863</h4>
+                            <p class="tl-desc">Established the Superior Commission of Primary Instruction, laying the
+                                initial organizational foundation for public education in the Philippines.</p>
+                        </div>
+                        <div class="tl-item">
+                            <div class="tl-dot"></div>
+                            <div class="tl-year">20th Century</div>
+                            <h4 class="tl-title">Reorganizations & Charters</h4>
+                            <p class="tl-desc">The educational agency underwent numerous restructuring efforts to align
+                                its purpose with changing administrations and national directions.</p>
+                        </div>
+                        <div class="tl-item">
+                            <div class="tl-dot"></div>
+                            <div class="tl-year">2001</div>
+                            <h4 class="tl-title">Republic Act 9155</h4>
+                            <p class="tl-desc">Enacted as the <strong>Governance of Basic Education Act of
+                                    2001</strong>, officially establishing the present-day mandate and highlighting the
+                                school as the heart of the formal education system.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3
+                        style="margin-bottom: 1rem; color: var(--blue); display: flex; align-items: center; gap: .6rem;">
+                        <i class="fa-solid fa-gears"></i> Core Mandated Responsibilities
+                    </h3>
+                    <p style="margin-bottom: 1.5rem; color: var(--txt2);">As an agency under the Department of Education
+                        (DepEd), we participate in its core institutional duties:</p>
+                    <div class="scope-grid">
+                        <div class="scope-card">
+                            <div class="scope-icon"><i class="fa-solid fa-list-check"></i></div>
+                            <h4>Policy Formulation</h4>
+                            <p>Formulates, implements, and coordinates policies, plans, programs, and projects for
+                                formal and non-formal basic education.</p>
+                        </div>
+                        <div class="scope-card">
+                            <div class="scope-icon"><i class="fa-solid fa-school"></i></div>
+                            <h4>Institutional Supervision</h4>
+                            <p>Supervises all elementary and secondary education institutions, including alternative
+                                learning systems (ALS), across both public and private sectors.</p>
+                        </div>
+                        <div class="scope-card">
+                            <div class="scope-icon"><i class="fa-solid fa-chart-line"></i></div>
+                            <h4>Integrated Systems</h4>
+                            <p>Provides and maintains a complete, adequate, and integrated system of basic education
+                                relevant to the goals of national development.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Banner -->
+    <div class="quote-banner reveal">
+        <div class="container">
+            <p class="quote">Education is a shared responsibility. When the family, school, and community build
+                alliances, we equip learners with essential knowledge, skills, and a sound value system.</p>
+            <div class="quote-author">CBNHS - Springville Commitment</div>
+        </div>
+    </div>
+
+    <!-- Vision & Mission -->
+    <section id="vm" class="reveal">
+        <div class="container">
+            <div class="sec-head">
+                <span class="sec-tag">Our Identity</span>
+                <h2 class="sec-title">Vision & Mission</h2>
+                <div class="divider"></div>
+                <p class="sec-desc">Our commitments to academic advancement, cultural integrity, and stakeholder
+                    synergy.</p>
+            </div>
+            <div class="vm-grid">
+                <div class="card vm-card" style="display: flex; flex-direction: column;">
+                    <div>
+                        <div class="vm-icon"><i class="fa-solid fa-eye"></i></div>
+                        <h3 class="vm-title">Our Vision</h3>
+                        <p class="vm-text">The City of Bacoor National High School-Springville envisions Bacooreño
+                            learners who possess the value of patriotism, a sound value system, skills, and competencies
+                            that enable them towards self-actualization to contribute significantly in building a better
+                            community.</p>
+                        <p class="vm-text sub">As a learner-centered public institution, CBNHS-Springville commits
+                            itself to academic advancement and character building to better serve its stakeholders.</p>
+                    </div>
+                    <div class="chips">
+                        <span class="chip gold">Patriotism</span>
+                        <span class="chip gold">Self-Actualization</span>
+                        <span class="chip gold">Character Building</span>
+                        <span class="chip">Learner-Centered</span>
+                        <span class="chip">Academic Advancement</span>
+                    </div>
+                </div>
+                <div class="card vm-card" style="display: flex; flex-direction: column;">
+                    <div>
+                        <div class="vm-icon"><i class="fa-solid fa-compass"></i></div>
+                        <h3 class="vm-title">Our Mission</h3>
+                        <p class="vm-text">CBNHS-Springville is committed to safeguard and nurture the right of every
+                            Bacooreño Learner to excellent, equitable, culture-based, and complete basic education.</p>
+                        <p class="vm-text sub">Where every learner acquires knowledge in a child-friendly,
+                            gender-sensitive, safe, and motivating environment facilitated and nurtured by teachers —
+                            ensuring an enabling and supportive environment for well-organized learning to transpire.
+                        </p>
+                    </div>
+                    <div class="chips">
+                        <span class="chip">Equitable & Culture-Based</span>
+                        <span class="chip gold">Child-Friendly</span>
+                        <span class="chip">Gender-Sensitive</span>
+                        <span class="chip gold">Safe & Motivating</span>
+                        <span class="chip">Shared Alliances</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values -->
+    <section id="values" class="reveal">
+        <div class="container">
+            <div class="sec-head">
+                <span class="sec-tag">Interactive Showcase</span>
+                <h2 class="sec-title">Core Institutional Values</h2>
+                <div class="divider"></div>
+                <p class="sec-desc">Click on any core value to discover how it applies to our educational commitments.
+                </p>
+            </div>
+            <div class="val-grid">
+                <div class="val-card" onclick="toggleVal(this)">
+                    <div class="val-icon"><i class="fa-solid fa-flag"></i></div>
+                    <div class="val-name">Patriotism</div>
+                    <div class="val-detail">Envisioning learners who actively love and serve their country, embodying
+                        values that contribute to building a stronger, unified community.</div>
+                </div>
+                <div class="val-card" onclick="toggleVal(this)">
+                    <div class="val-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <div class="val-name">Academic Excellence</div>
+                    <div class="val-detail">Providing complete, excellent, and culture-based education to equip learners
+                        with vital competencies and modern knowledge.</div>
+                </div>
+                <div class="val-card" onclick="toggleVal(this)">
+                    <div class="val-icon"><i class="fa-solid fa-shield-heart"></i></div>
+                    <div class="val-name">Child-Friendly & Safe</div>
+                    <div class="val-detail">Fostering gender-sensitive, motivating, and safe spaces where learners are
+                        nurtured, respected, and kept free from harm.</div>
+                </div>
+                <div class="val-card" onclick="toggleVal(this)">
+                    <div class="val-icon"><i class="fa-solid fa-users"></i></div>
+                    <div class="val-name">Shared Alliances</div>
+                    <div class="val-detail">Building trust and active participation with families, local administration,
+                        and community stakeholders as key education co-partners.</div>
+                </div>
+                <div class="val-card" onclick="toggleVal(this)">
+                    <div class="val-icon"><i class="fa-solid fa-gem"></i></div>
+                    <div class="val-name">Character Building</div>
+                    <div class="val-detail">Cultivating a sound value system that guides learners toward
+                        self-actualization, integrity, and ethical leadership.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pledge Portal -->
+    <section id="pledge" class="reveal">
+        <div class="container">
+            <div class="sec-head">
+                <span class="sec-tag">Stakeholder Engagement</span>
+                <h2 class="sec-title">Stakeholder Pledge Portal</h2>
+                <div class="divider"></div>
+                <p class="sec-desc">Confirm your alignment with our school's mission and generate your personalized
+                    Certificate of Commitment.</p>
+            </div>
+            <div class="pledge-grid">
+                <div class="card">
+                    <h3 style="margin-bottom: 1.25rem; color: var(--accent);"><i class="fa-solid fa-pen-to-square"></i>
+                        Pledge Form</h3>
+                    <form id="pledgeForm" onsubmit="genCert(event)">
+                        <div class="form-group">
+                            <label for="pName" class="form-label">Full Name</label>
+                            <input type="text" id="pName" class="form-input" placeholder="Enter your full name"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pRole" class="form-label">Stakeholder Role</label>
+                            <select id="pRole" class="form-select" required>
+                                <option value="" disabled selected>Select your role...</option>
+                                <option value="Student">Learner / Student</option>
+                                <option value="Parent / Guardian">Parent / Guardian</option>
+                                <option value="Educator / Teacher">Educator / Teacher</option>
+                                <option value="Alumnus">Alumnus</option>
+                                <option value="Community Partner">Community Partner</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Alliance Commitments</label>
+                            <label class="chk-label"><input type="checkbox" required><span>I commit to active alliances
+                                    and sharing responsibility to equip every Bacooreño learner.</span></label>
+                            <label class="chk-label"><input type="checkbox" required><span>I support a child-friendly,
+                                    gender-sensitive, safe, and motivating learning environment.</span></label>
+                            <label class="chk-label"><input type="checkbox" required><span>I value academic advancement,
+                                    patriotic principles, and sound character building.</span></label>
+                        </div>
+                        <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center;">
+                            Submit Pledge & Generate Certificate <i class="fa-solid fa-certificate"></i>
+                        </button>
+                    </form>
+                </div>
+                <div>
+                    <div id="certOut" class="cert-frame" style="position: relative;">
+                        <div
+                            style="display: flex; flex-direction: column; align-items: center; gap: 1.25rem; color: var(--txt2);">
+                            <i class="fa-solid fa-stamp"
+                                style="font-size: 3.5rem; color: var(--accent); opacity: .4;"></i>
+                            <h4 style="font-family: 'Outfit', sans-serif; font-weight: 700;">Certificate Pending</h4>
+                            <p style="font-size: .85rem; text-align: center;">Fill out the Pledge Form to activate your
+                                Certificate of Commitment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div>
+                <a href="#" class="logo" style="margin-bottom: 1rem;">
+                    <img src="cbnhslogo.jfif" alt="CBNHS Logo"
+                        style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);"
+                        onerror="this.src='https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&q=80&w=100';">
+                    <div class="logo-txt" style="color: white;">CBNHS - Springville<span>Division of Bacoor City</span>
+                    </div>
+                </a>
+                <p style="font-size: .9rem; line-height: 1.6;">Safeguarding the right of every Bacooreño Learner to an
+                    excellent, equitable, culture-based, and complete basic education.</p>
+            </div>
+            <div>
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#mandate"><i class="fa-solid fa-chevron-right"></i> DepEd Mandate</a></li>
+                    <li><a href="#vm"><i class="fa-solid fa-chevron-right"></i> Vision & Mission</a></li>
+                    <li><a href="#values"><i class="fa-solid fa-chevron-right"></i> Core Values</a></li>
+                    <li><a href="#pledge"><i class="fa-solid fa-chevron-right"></i> Pledge Portal</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">Contact</h4>
+                <div style="display: flex; flex-direction: column; gap: .75rem; font-size: .9rem;">
+                    <div style="display: flex; gap: .6rem;"><i class="fa-solid fa-location-dot"
+                            style="color: var(--accent); margin-top: 3px;"></i><span>Springville Subd., Molino III, City
+                            of Bacoor, Cavite</span></div>
+                    <div style="display: flex; gap: .6rem;"><i class="fa-solid fa-envelope"
+                            style="color: var(--accent); margin-top: 3px;"></i><span>cbnhs.springville@deped.gov.ph</span>
+                    </div>
+                    <div style="display: flex; gap: .6rem;"><i class="fa-solid fa-phone"
+                            style="color: var(--accent); margin-top: 3px;"></i><span>(046) 417-XXXX</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 City of Bacoor National High School - Springville. All Rights Reserved.</p>
+            <p>Administered via RA 9155 / DepEd &nbsp;|&nbsp; Website created by: Maque, Genesis Cloud C.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle
+        const html = document.documentElement;
+        const themeBtn = document.getElementById('themeBtn');
+        const themeIcon = themeBtn.querySelector('i');
+        const saved = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', saved);
+        themeIcon.className = saved === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+
+        themeBtn.onclick = () => {
+            const t = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', t);
+            localStorage.setItem('theme', t);
+            themeIcon.className = t === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+        };
+
+        // Mobile menu
+        const mobBtn = document.getElementById('mobBtn');
+        const navMenu = document.getElementById('navMenu');
+        mobBtn.onclick = () => {
+            navMenu.classList.toggle('open');
+            mobBtn.querySelector('i').className = navMenu.classList.contains('open') ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+        };
+        document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
+            navMenu.classList.remove('open');
+            mobBtn.querySelector('i').className = 'fa-solid fa-bars';
+        }));
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); observer.unobserve(e.target); } });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Core values toggle
+        function toggleVal(card) {
+            const wasOpen = card.classList.contains('open');
+            document.querySelectorAll('.val-card').forEach(c => c.classList.remove('open'));
+            if (!wasOpen) card.classList.add('open');
+        }
+
+        // Certificate generator
+        function genCert(e) {
+            e.preventDefault();
+            const name = document.getElementById('pName').value;
+            const role = document.getElementById('pRole').value;
+            const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            document.getElementById('certOut').innerHTML = `
+            <div class="cert-header">Certificate of Stakeholder Alliance</div>
+            <div class="cert-title">Commitment to Basic Education</div>
+            <div style="font-size:.9rem;color:var(--txt2);margin-bottom:.75rem;">This is proudly presented to</div>
+            <div class="cert-name">${name}</div>
+            <div class="cert-role-tag">${role}</div>
+            <p style="font-size:.82rem;color:var(--txt2);max-width:340px;margin-bottom:1rem;">
+                for aligning in shared responsibility to safeguard and nurture the rights of Bacooreño Learners to excellent, equitable, and safe basic education at CBNHS-Springville.
+            </p>
+            <div style="font-size:.78rem;color:var(--txt2);">Granted on: <strong>${date}</strong></div>
+            <svg viewBox="0 0 100 100" width="65" height="65" style="margin-top:1rem;opacity:.8;">
+                <circle cx="50" cy="50" r="40" fill="var(--accent)"/>
+                <path d="M50,15 L60,40 L85,40 L65,55 L75,80 L50,65 L25,80 L35,55 L15,40 L40,40 Z" fill="#0b1329"/>
+            </svg>
+            <div style="display:flex;gap:.75rem;margin-top:1rem;">
+                <button class="btn btn-glass" onclick="window.print()" style="padding:.4rem 1rem;font-size:.8rem;"><i class="fa-solid fa-print"></i> Print</button>
+                <button class="btn btn-gold" onclick="alert('Pledge shared! Thank you, ${name}!')" style="padding:.4rem 1rem;font-size:.8rem;"><i class="fa-solid fa-share-nodes"></i> Share</button>
+            </div>`;
+
+            confetti({ particleCount: 120, spread: 70, origin: { y: 0.6 } });
+        }
+    </script>
+</body>
+
+</html>
